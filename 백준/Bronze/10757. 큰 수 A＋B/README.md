@@ -22,3 +22,6 @@
 
  <p>첫째 줄에 A+B를 출력한다.</p>
 
+### 풀이
+
+https://velog.io/@scroll0908/백준-Node.js-10757
