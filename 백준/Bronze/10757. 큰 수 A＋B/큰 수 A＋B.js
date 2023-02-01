@@ -1,0 +1,5 @@
+const fs = require('fs')
+const [a,b] = fs.readFileSync('/dev/stdin').toString().trim().split(" ")
+const sum = BigInt(a) + BigInt(b)
+console.log(`${sum}`)
+// console.log( sum.toString() )
