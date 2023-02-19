@@ -1,30 +1,25 @@
-function solution(N, stages) {
-  let stageCount = new Array(N);
-  let failPer = [];
-  stageCount.fill(0);
+const sum = (obj, num) => {
+  let re = 0
+  for(let i = 0; i < num; i++){
+    re += obj[i] || 0
+  }
+  return re
+}
 
-  let usersNum = stages.length;
-  for (let val of stages) {
-    stageCount[val - 1]++;
+const solution = (N, stages) => {
+  let len = N.toString().length
+  let count = {}
+  let fail = []
+
+  stages.forEach(el => {
+    count[el] = ( count[el] || 0 ) + 1   
+  })
+
+  for(let i = 1; i <= N; i++){
+    let rate = count[i] / (stages.length - sum(count, i)) || 0
+    let ele = fail.find(el => el[0] === rate )
+    ele ? ele.push(i) : fail.push([rate, i])      
   }
 
-  for (let i = 0; i < N; i++) {
-    if (usersNum === 0) {
-      failPer.push({ failper: 0, stageNum: i + 1 });
-    } else {
-      failPer.push({ failper: stageCount[i] / usersNum, stageNum: i + 1 });
-    }
-    usersNum -= stageCount[i];
-  }
-
-  failPer.sort((a, b) => {
-    if (a.failper === b.failper) {
-      return a.stageNum - b.stageNum;
-    }
-    return b.failper - a.failper;
-  });
-
-  return failPer.map(item => {
-    return item.stageNum;
-  });
+  return fail.sort().reverse().map(el => el.slice(1).join(' ')).join(' ').split(' ').map(Number)
 }
