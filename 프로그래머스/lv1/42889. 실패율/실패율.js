@@ -1,10 +1,30 @@
 function solution(N, stages) {
-    let result = [];
-    for(let i=1; i<=N; i++){
-        let reach = stages.filter((x) => x >= i).length;
-        let curr = stages.filter((x) => x === i).length;
-        result.push([i, curr/reach]);
+  let stageCount = new Array(N);
+  let failPer = [];
+  stageCount.fill(0);
+
+  let usersNum = stages.length;
+  for (let val of stages) {
+    stageCount[val - 1]++;
+  }
+
+  for (let i = 0; i < N; i++) {
+    if (usersNum === 0) {
+      failPer.push({ failper: 0, stageNum: i + 1 });
+    } else {
+      failPer.push({ failper: stageCount[i] / usersNum, stageNum: i + 1 });
     }
-    result.sort((a,b) => b[1] - a[1]);
-    return result.map((x) => x[0]);
+    usersNum -= stageCount[i];
+  }
+
+  failPer.sort((a, b) => {
+    if (a.failper === b.failper) {
+      return a.stageNum - b.stageNum;
+    }
+    return b.failper - a.failper;
+  });
+
+  return failPer.map(item => {
+    return item.stageNum;
+  });
 }
