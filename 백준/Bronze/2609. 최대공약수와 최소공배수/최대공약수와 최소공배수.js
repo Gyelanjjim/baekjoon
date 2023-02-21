@@ -1,33 +1,15 @@
 const fs = require('fs');
 const [a, b] = fs.readFileSync("/dev/stdin").toString().trim()
-                 .split(' ').map(Number) ;
+                 .split(' ').map(Number);
 
-const solution = (a, b) => {
-  const prime = Object.keys(primeObj(a*b))
-  let [pA, pB] = [primeObj(a), primeObj(b)]
-  let max = 1
+const solution = (a,b) => {
+  const smaller = Math.min(a, b);
   
-  prime.forEach(el => {
-    if(pA[el] && pB[el]){
-      pA[el] > pB[el] ? 
-        max *= el**pB[el] : max *= el**pA[el]
-    }
-  })
-  return max + '\n' + a*b/max
-}
-
-const primeObj = num => {
-  let i = 2
-  let obj = {}
-  while(num >= i){
-    if(num % i === 0){
-      obj[i] = ( obj[i] || 0 ) + 1
-      num /= i
-    }else{
-      i++
+  for (let i = smaller; i > 0; i--) {
+    if (a % i === 0 && b % i === 0) {
+      return i +'\n'+ a * b / i
     }
   }
-  return obj
 }
 
-console.log(solution(a, b))
+console.log(solution(a,b));
