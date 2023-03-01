@@ -11,7 +11,7 @@ const fa = num => {
 }
 
 const solution = (n, k) => {
-    return n === k ? 1 : ( fa(n) / (fa(n-k) * fa(k)) ).toString()
+    return n === k ? 1 : fa(n) / (fa(n-k) * fa(k)) 
 }
 
 console.log(solution(n,k))
