@@ -4,7 +4,7 @@ const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n')
 input.pop()
 
 const solution = (s) => {
-  const arr = ['()', '{}', '[]'];
+  const arr = ['()', '[]'];
   return s.map(el => {
       let i=0;
       while(i<arr.length){	// (1)
