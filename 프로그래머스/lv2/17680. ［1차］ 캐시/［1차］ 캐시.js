@@ -6,17 +6,17 @@ function solution(cacheSize, cities) {
     if(cacheSize === 0){
       answer += 5  
     }else{
-      if(arr.indexOf(el) !== -1){
-        arr.splice(arr.indexOf(el), 1)
+      const idx = arr.indexOf(el)
+      if(idx !== -1){
+        arr.splice(idx, 1)
         arr.push(el)
         answer += 1  
-      }else if(arr.indexOf(el) === -1){
-        arr.shift(el)
+      }else if(idx === -1){
+        arr.shift()
         arr.push(el)
         answer += 5
       }
     }
   })
-  
   return answer
 }
