@@ -8,5 +8,5 @@ function solution(n) {
         biggerOne = biggerN.replaceAll(0,'').length
     }while(nOne !== biggerOne)
     
-    return parseInt(biggerN,2);
+    return n;
 }
