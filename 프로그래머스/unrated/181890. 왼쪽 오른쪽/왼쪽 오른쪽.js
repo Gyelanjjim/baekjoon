@@ -1,19 +1,14 @@
 function solution(str_list) {
-    let l = -1;
-    let r = -1;
+  const l_idx = str_list.indexOf('l');
+  const r_idx = str_list.indexOf('r');
 
-    for (let i = 0; i < str_list.length; i++) {
-        if (str_list[i] === 'l') {
-            l = i;
-            break;
-        } else if (str_list[i] === 'r') {
-            r = i;
-            break;
-        }
-    }
-
-    return l !== -1 ? str_list.slice(0, l) : 
-                r !== -1 ? str_list.slice(r + 1) : []
+  if (l_idx === -1 && r_idx === -1) {
+    return [];
+  } else if (l_idx !== -1 && r_idx === -1) {
+    return str_list.slice(0, l_idx);
+  } else if (l_idx === -1 && r_idx !== -1) {
+    return str_list.slice(r_idx + 1);
+  } else {
+    return l_idx < r_idx ? str_list.slice(0, l_idx) : str_list.slice(r_idx + 1);
+  }
 }
-
-
