@@ -1,12 +1,11 @@
 function solution(n, control) {
-    const cmd = {
-        'w': (x) => x+1,
-        's': (x) => x-1,
-        'd': (x) => x+10,
-        'a': (x) => x-10
+    for(let i = 0 ; i < control.length ; i++){
+        switch(control[i]) {
+            case "w" : n++;break;
+            case "s" : n--;break;
+            case "d" : n+=10;break;
+            case "a" : n-=10;break;
+        }
     }
-    control.split('').forEach(el => {
-        n = cmd[el](n)
-    })
-    return n
+    return n;
 }
