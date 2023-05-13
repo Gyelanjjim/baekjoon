@@ -1,13 +1,12 @@
 function solution(a, b, c, d) {
     const arr = [a,b,c,d].sort()
-    const count = arr.reduce((ac,v) => ({...ac, [v]:(ac[v]||0)+1}), 0)
-    const num = Object.entries(count)
+    const num = [...new Set(arr)]
     // 조건 1. 모두 같을 경우
     if(num.length === 1){
-        return 1111 * num[0][0]
+        return 1111 * num[0]
     // 조건 2. 모두 다를 경우
     }else if(num.length === 4){
-        return +num[0][0]
+        return num[0]
     // 조건 3. 2개 같고 2개 다를 경우
     }else if(num.length === 3){
         for(let i=0; i<4;i++){
