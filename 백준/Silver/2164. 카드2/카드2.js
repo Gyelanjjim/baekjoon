@@ -1,5 +1,5 @@
 const fs = require('fs');
-const input = Number( fs.readFileSync("/dev/stdin").toString().trim() )
+const input = fs.readFileSync("/dev/stdin").toString().trim()
 
 const solution = length => {
   let queue = Array.from({length}, (_, i) => i+1);
