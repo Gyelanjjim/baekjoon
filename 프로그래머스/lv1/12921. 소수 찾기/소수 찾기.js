@@ -1,33 +1,10 @@
-// function solution (n) {
-//   let count = 0
-//   for(let i=2; i<=n; i++){
-//       if(i <= 3){
-//           count++
-//       }else{
-//           const end = parseInt(Math.sqrt(i))
-//           for(let j=2; j<=end; j++){
-//               if(i % j === 0){
-//                   break;
-//               }
-//           }
-//           count++
-//       }
-//   }  
-//   return count
-// }
-function solution(n) {
-    const s = new Set();
-    for(let i=1; i<=n; i+=2){
-        s.add(i);
+function solution(n){
+  let s= [...Array(n).keys()]
+  s[0]=0
+  for(let i=2; i<=parseInt(n**.5)+1;i++){
+    for (let j=2 ; j<=(n-i)/i+1; j++){
+      s[i*j-1]=0
     }
-    s.delete(1);
-    s.add(2);
-    for(let j=3; j<n; j++){
-        if(s.has(j)){
-             for(let k=j*2; k<=n; k+=j){    
-                s.delete(k);
-             }
-        }
-    }
-    return s.size;
+  }
+  return s.filter(x=>Boolean(x)).length;
 }
