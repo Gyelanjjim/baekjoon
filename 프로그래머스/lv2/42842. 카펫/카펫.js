@@ -1,10 +1,21 @@
 function solution(brown, yellow) {
-    const b = brown/2
-    let i = 2
-    while(i<=b){
-        if((i-1)*(b-i-1) === yellow) return [b-i+1, i+1]
-        i++
-    }   
+  	const total = brown + yellow
+    let i = 3
+    while(i<= total/i){
+        let x = total/i
+      	if(total%i === 0 && (x-2)*(i-2) === yellow) {
+            return [x,i]  
+        }else{
+            i++
+        }      
+    }
+    
+    // const b = brown/2
+    // let i = 2
+    // while(i<=b){
+    //     if((i-1)*(b-i-1) === yellow) return [b-i+1, i+1]
+    //     i++
+    // }   
     // 24,24 -> brown/2 = 12 | (7+1),(5+1) = 8,6
     /*
         2,10 3,11 -> 1*9 = 9
