@@ -22,7 +22,7 @@ function solution(n) {
     }
     s.delete(1);
     s.add(2);
-    for(let j=3; j<Math.sqrt(n); j++){
+    for(let j=3; j<n; j++){
         if(s.has(j)){
              for(let k=j*2; k<=n; k+=j){    
                 s.delete(k);
