@@ -3,7 +3,7 @@ function solution(priorities, location) {
     let sorted = priorities.sort((a,b)=>b-a)
     let [i,j] = [0,0]
     let count = 0
-    while(j<sorted.length){
+    while(true){
         if(origin[i][1] !== sorted[j]){
             origin.push(origin[i])
             i++
