@@ -20,6 +20,8 @@ const solution = (N, stages) => {
     let ele = fail.find(el => el[0] === rate )
     ele ? ele.push(i) : fail.push([rate, i])      
   }
-
-  return fail.sort().reverse().map(el => el.slice(1).join(' ')).join(' ').split(' ').map(Number)
+//
+  return fail.sort((a,b)=>b[0]-a[0])
+    .map(el => el.slice(1).join(' '))
+    .join(' ').split(' ').map(Number)
 }
