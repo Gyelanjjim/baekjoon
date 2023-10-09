@@ -2,8 +2,8 @@ function solution(msg) {
     const dict = {}
     const answer = []
     let val;
-    for(let i=0; i<26; i++){
-        dict[ String.fromCharCode(i+65) ] = i+1
+    for(let i=1; i<=26; i++){
+        dict[ String.fromCharCode(i+64) ] = i
     }
     let [s, e] = [0, 1]
     while(e < msg.length+1){
