@@ -1,6 +1,8 @@
-function solution(phoneBook) {
-    return !phoneBook.sort().some((_, i) => {
-        if(i === phoneBook.length - 1) return false;
-        return phoneBook[i+1].startsWith(phoneBook[i]);   
-    })
+function solution(phone_book) {
+    phone_book.sort()
+    for(let i=0; i<phone_book.length-1; i++){
+        // if(phone_book[i].length > phone_book[i+1].length) break;
+        if(phone_book[i+1].startsWith(phone_book[i])) return false
+    }
+    return true
 }
