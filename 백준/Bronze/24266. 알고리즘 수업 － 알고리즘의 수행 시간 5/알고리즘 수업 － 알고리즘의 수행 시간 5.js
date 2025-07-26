@@ -1,10 +1,8 @@
 const fs = require('fs');
 const input = BigInt(fs.readFileSync('/dev/stdin').toString().trim());
 
-const solution = (n) => {
-    const count = n * n * n;
-    console.log(count.toString());
-    console.log(3);
+const solution = (input) => {
+    return `${(input**3n).toString()}\n3`;
 };
 
-solution(input);
+console.log(solution(input));
